@@ -1,0 +1,23 @@
+列名	               型	      サイズ	NN	PK	CK	FK	説明・備考		
+									
+Userテーブル							                                                  サイズは適当(全テーブル)		
+User_ID	             number	    8    〇	〇			    ユーザーのID（主キー）		←ログイン機能は作れたら作る
+User_Name	           varchar2	  20	 〇				     ユーザーの名前		
+pass	               varchar2	  20	 〇			       ユーザーのパスワード		
+User_image	         BLOB?	    ??					        ユーザーのアカウント画像		
+									
+									
+Threadテーブル									
+Thread_ID         	number    	8	   〇	〇			    スレッドのID（主キー）		
+Thread_Title       	varchar2	  100	 〇				     スレッドのタイトル名		
+Thread_Date       	date	      なし					      スレッドの作成日時		
+Thread_User       	number    	8	   〇				     スレッドの投稿者のID（外部キー）		
+Thread_Remit	      varchar2  	1000					      レスの上限（チェック条件あり）		←Responseで作った方がいいかも
+									                                                                    ってかいらないかも
+Responseテーブル									
+Res_User	          number	   8	  〇				      返信の投稿者のID		
+Res_ID	            number     8	  〇	 〇			   返信のID（主キー）		
+Res_date          	date	    なし					       返信の日時		
+Res_comment	        varchar2	500	  〇				      返信の内容		
+Thread_ID(FK)     	number	   8	  〇  〇		  〇	スレッドのID(主キー)		
+									
