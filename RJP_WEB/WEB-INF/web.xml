@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+  version="2.4">
+
+  <servlet>
+    <servlet-name>selecttest</servlet-name>
+    <servlet-class>DatabaseTest2</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>selecttest</servlet-name>
+    <url-pattern>/databasetest</url-pattern>
+  </servlet-mapping>
+
+
+
+
+
+  <servlet>
+    <servlet-name>threadlist</servlet-name>
+    <jsp-file>/threadlist.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>threadlist</servlet-name>
+    <url-pattern>/threadlist</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>ThreadServlet</servlet-name>
+    <servlet-class>ThreadServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>ThreadServlet</servlet-name>
+    <url-pattern>/ThreadServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>responselist</servlet-name>
+    <jsp-file>/responselist.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>responselist</servlet-name>
+    <url-pattern>/responselist</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>ResponseServlet</servlet-name>
+    <servlet-class>ResponseServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>ResponseServlet</servlet-name>
+    <url-pattern>/ResponseServlet</url-pattern>
+</servlet-mapping>
+
+</web-app>
