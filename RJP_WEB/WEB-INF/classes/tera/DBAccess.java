@@ -275,4 +275,44 @@ public class DBAccess{
 			e.printStackTrace();
 		}
 	}
+	public ArrayList<ThreadBean> threadSearch(String Thread_Title,ArrayList<ThreadBean> threadResult){
+		try{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			//Oracleに接続する
+			Connection cn=
+				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
+				"TB_MASTER","TBPASS");
+				String sql=" SELECT Thread_ID,Thread_Title,Thread_Date,Thread_User FROM Thread WHERE Thread_Title Like '%"+Thread_Title+"%' ORDER BY TO_NUMBER(Thread_ID)";
+			Statement st=cn.createStatement();
+			ResultSet rs=st.executeQuery(sql);
+			threadResult.clear();
+
+			while(rs.next()){
+				ThreadBean tb = new ThreadBean();
+				String ti=rs.getString (1);	//1列目のデータを取得
+				String tt=rs.getString(2);	//2列目のデータを取得
+				String td=rs.getString(3);	//3列目のデータを取得
+				String tu=rs.getString(4);
+            	tb.setThreadID(ti);
+				tb.setThreadTitle(tt);
+				tb.setThreadDate(td);
+				tb.setThreadUser(tu);
+				threadResult.add(tb);
+				
+            }		
+
+			//Oracleから切断する
+            cn.close();
+        }catch(ClassNotFoundException e){
+			e.printStackTrace();
+			System.out.println("クラスがないみたい。");
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("SQL関連の例外みたい。");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return threadResult;
+	}
 }

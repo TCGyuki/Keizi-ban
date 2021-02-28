@@ -3,26 +3,30 @@
 
 <%--JSTL 1.1.2 core タグライブラリ--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
-	<script>
+	<meta charset="Windows-31J">
+	<!--<script>
 		function anker(id_name){
 			obj = document.getElementByID(id_name);
 			y= obj.offsetTop;
 			scrollTo(0.y);
 		}
-	</script>
-<style type="text/css">
-<!--
-textarea {
-  resize: none;}
-</style>
-<title><c:forEach var="_responses" items="${r_list}">
+	</script>-->
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+	<link href="css/style.css" rel="stylesheet">
+
+<title>
+	<c:forEach var="_responses" items="${r_list}">
 	${_responses.threadTitle}スレッド
-</c:forEach></title>
+	</c:forEach>
+</title>
 </head>
+
 <body>
-	<a href="http://localhost:8080/RJP_WEB/ThreadServlet">←スレッド一覧へ</a>
+	<h2>     </h2>
 	<h1 id="上に戻る↑">TADANO掲示板</h1>
 	<h2>
 		<c:forEach var="_responses" items="${r_list}">
@@ -30,7 +34,6 @@ textarea {
 		</c:forEach>
 	</h2>
 	<form method="POST" action="ResponseServlet?id=${t_id}">
-	<br>
 	<table border="1">
 		<tr><th>スレッドID</th><th>スレ主</th><th>作成日</th></th></tr>
 		<c:forEach var="_responses" items="${r_list}">
@@ -65,10 +68,11 @@ textarea {
 		
 		<tr><th>コメント</th>
 			<td><textarea name='Res_comment' cols="100" rows="10"  wrap="hard" required></textarea></td></tr>
-		<input type='submit' value='投稿'><br>
+		
 	</table>
+	<input class="submit-button" type='submit' value='投稿'><br>
 	</form>
-	<a href="http://localhost:8080/RJP_WEB/ThreadServlet">スレッド一覧に戻る</a>
+	<a href="http://localhost:8080/RJP_WEB/ThreadServlet">←スレッド一覧に戻る</a>
 
 </body>
 </html>

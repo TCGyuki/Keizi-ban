@@ -18,21 +18,20 @@
     <body>
         
     <h1>TADANO掲示板</h1>
-    <h2 id="th">投稿スペース</h2>
-        <form action="ThreadServlet" method="POST">
+    <h2 id="th">検索ページ</h2>
+        <form action="SearchServlet" method="POST">
         <table border="1">
             <tr>
-                <th>タイトル</th><td><textarea name="Thread_Title" rows="5" cols="50" maxlength="100" required></textarea></td></tr>
-            <tr><th>スレ主</th><td><input type="text" size="20" maxlength="20" value="名もなき民" name="Thread_User" required></td>
+                <th>タイトル</th><td><textarea name="Thread_Title" rows="5" cols="50" maxlength="100" required></textarea></td>
             </tr>
         </table>
-        <input class="submit-button"type="submit" VALUE="投稿">
+        <input class="submit-button"type="submit" VALUE="検索">
         </form>
         <br>
-        <h2>これまでのスレッド</h2>
+        <h2>検索結果</h2>
         <table border="1">
             <tr></th><th>スレッドID</th><th>タイトル</th><th>日付</th><th>スレ主</th></tr>
-            <c:forEach var="_threads" items="${threads}">
+            <c:forEach var="_threads" items="${search}">
                 <tr>
                 <td><a href="ResponseServlet?id=${_threads.threadID}">>>${_threads.threadID}</a></td>
                 <!--<td>${_threads.threadID}</td>-->
@@ -45,9 +44,9 @@
             タイトル：<input type="text" name="Thread_Title" size="40"><br>
             作成者名：<input type="text" name="Thread_User" size="10">-->
         </table>
-        <a href="#th">投稿場所へ↑</a>
-        <br>
-	<a href="http://localhost:8080/RJP_WEB/searchlist">→検索ページへ</a>
+        <a href="#th">検索欄へ↑</a>
     </form>
+    <br>
+	<a href="http://localhost:8080/RJP_WEB/ThreadServlet">←スレッド一覧に戻る</a>
     </body>
 </html>

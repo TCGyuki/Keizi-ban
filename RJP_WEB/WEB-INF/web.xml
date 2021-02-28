@@ -59,4 +59,24 @@
     <url-pattern>/ResponseServlet</url-pattern>
 </servlet-mapping>
 
+<servlet>
+    <servlet-name>searchlist</servlet-name>
+    <jsp-file>/searchlist.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>searchlist</servlet-name>
+    <url-pattern>/searchlist</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>SearchServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/SearchServlet</url-pattern>
+</servlet-mapping>
+
 </web-app>
