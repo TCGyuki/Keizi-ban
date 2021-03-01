@@ -13,9 +13,9 @@ public class NgCheck {
 //禁止文字、文字数制限
     public String doCheck(String text){
         //List<String> wordList = new ArrayList<String>();
-        String result="";
+        //String result="";
         //String value[] = {"名前","紹介文"};
-        String contents[] = {text};//判定する文字列
+        //String contents[] = {text};//判定する文字列
         for(int o = 0;o<1;o++) {//タイトル(最小、最大)、コメント(最小、最大)
             /*
             int restriction[][] = {{1,100},{1,500}};
@@ -32,11 +32,12 @@ public class NgCheck {
                 sb.append(i);
                 sb.append(").*");
                 Pattern p = Pattern.compile(sb.toString()); //正規表現をパターンオブジェクトにコンパイル
-                Matcher m = p.matcher(contents[o]); //判定する
+                Matcher m = p.matcher(/*contents[o]*/text); //判定する
 
                 //禁止文字が含まれていた場合
                 if(m.find()) {
-                    result="[この発言には不適切な内容が含まれていました]";
+                    //result="[この発言には不適切な内容が含まれていました]";
+                    text=text.replaceAll(i,"[禁止用語]");
                 }
             }
         }/*
@@ -45,6 +46,7 @@ public class NgCheck {
             result+= words+",";
         }*/
 
-        return result;
+        //return result;
+        return text;
     }
 }
