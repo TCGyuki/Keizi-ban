@@ -45,9 +45,21 @@
             タイトル：<input type="text" name="Thread_Title" size="40"><br>
             作成者名：<input type="text" name="Thread_User" size="10">-->
         </table>
+        <h3>最新の10件</h3>
+<table border="1">
+            <tr></th><th>スレッドID</th><th>レス民</th><th>レス内容</th><th>日付</th></tr>
+            <c:forEach var="_new" items="${newlist}">
+                <tr>
+                <td><a href="ResponseServlet?id=${_new.threadID}">>>${_new.threadID}</a></td>
+		<td>${_new.resUser}</td>
+		<td>${_new.resComment}</td>
+		<td>${_new.resDate}</td>
+                </tr>
+            </c:forEach>
+</table>
         <a href="#th">投稿場所へ↑</a>
         <br>
-	<a href="http://localhost:8080/RJP_WEB/searchlist">→検索ページへ</a>
+	<a href="http://localhost:8080/RJP_WEB/searchlist">→スレッド検索ページへ</a>
     </form>
     </body>
 </html>

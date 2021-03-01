@@ -67,7 +67,8 @@
 			<td><input type="text" size="20" maxlength="20" value="–¼‚à‚È‚«–¯" name="Res_User" required></td></tr>
 		
 		<tr><th>ƒRƒƒ“ƒg</th>
-			<td><textarea name='Res_comment' cols="100" rows="10"  wrap="hard" required></textarea></td></tr>
+			<td><textarea name='Res_comment' cols="100" rows="10"  wrap="hard" required></textarea></td>
+		</tr>
 		
 	</table>
 	<input class="submit-button" type='submit' value='“Še'><br>

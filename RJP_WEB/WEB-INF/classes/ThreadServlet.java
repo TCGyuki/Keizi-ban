@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import tera.ThreadBean;
 import tera.DBAccess;
-
+import tera.ResBean;
 
 public class ThreadServlet extends HttpServlet {
 
     private ArrayList<ThreadBean> threads = new ArrayList<ThreadBean>();
     DBAccess db  = new DBAccess();
+    private ArrayList<ResBean> newlist = new ArrayList<ResBean>();
 
     public void doGet(HttpServletRequest req,HttpServletResponse res)
         throws ServletException,IOException {
@@ -24,8 +25,10 @@ public class ThreadServlet extends HttpServlet {
         res.setContentType("text/html; charset=Windows-31J");
 
         threads=db.threadSelect(threads);
+        newlist = db.newList(newlist);
         
         req.setAttribute("threads",threads);
+        req.setAttribute("newlist",newlist);
 
         RequestDispatcher dispatcher = 
             req.getRequestDispatcher("threadlist");
@@ -65,6 +68,7 @@ public class ThreadServlet extends HttpServlet {
 
         //HttpServletRequestの実装クラスのインスタンスに
         req.setAttribute("threads", threads);
+        req.setAttribute("newlist",newlist);
         
         //RequestDispatcherインターフェイスを実装するクラスの
         //インスタンスを取得する

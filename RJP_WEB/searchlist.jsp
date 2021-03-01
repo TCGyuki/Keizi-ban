@@ -18,7 +18,7 @@
     <body>
         
     <h1>TADANO掲示板</h1>
-    <h2 id="th">検索ページ</h2>
+    <h2 id="th">スレッド検索ページ</h2>
         <form action="SearchServlet" method="POST">
         <table border="1">
             <tr>

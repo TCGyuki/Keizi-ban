@@ -315,4 +315,57 @@ public class DBAccess{
 		}
 		return threadResult;
 	}
+	public ArrayList<ResBean> newList(ArrayList<ResBean> list){
+		try{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			//Oracleに接続する
+			Connection cn=
+				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
+				"TB_MASTER","TBPASS");
+			//System.out.println("接続完了");
+			
+			//select文
+			String sql=" select * from ( select * FROM Response order by Res_Date desc ) where rownum <=10";
+
+			//Statementインターフェイスを実装するクラスをインスタンス化する
+			Statement st=cn.createStatement();
+
+			//select文を実行し
+			//ResultSetインターフェイスを実装したクラスの
+			//インスタンスが返る
+			ResultSet rs=st.executeQuery(sql);
+			list.clear();
+			//カーソルを一行だけスクロールし、データをフェッチする
+
+			
+			while(rs.next()){
+				ResBean rb = new ResBean();
+				String ti=rs.getString(1);
+				String ru=rs.getString(3);
+				String rd=rs.getString(4);
+				String rc=rs.getString(5);
+				rb.setThreadID(ti);
+				rb.setResUser(ru);
+				rb.setResDate(rd);
+				rb.setResComment(rc);
+				list.add(rb);
+            }
+
+			
+			//Oracleから切断する
+			cn.close();
+
+			//System.out.println("切断完了");
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+			System.out.println("クラスがないみたい。");
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("SQL関連の例外みたい。");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

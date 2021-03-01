@@ -39,6 +39,8 @@ public class ResponseServlet extends HttpServlet {
         String rc = req.getParameter("Res_comment");
         
         //Integer rii=Integer.parseInt(ri);
+
+        //NGチェック処理
         String result=nc.doCheck(rc);
         if(result == ""){
         }else{
