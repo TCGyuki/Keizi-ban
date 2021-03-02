@@ -44,6 +44,11 @@
             タイトル：<input type="text" name="Thread_Title" size="40"><br>
             作成者名：<input type="text" name="Thread_User" size="10">-->
         </table>
+        <table>
+                <tr>
+                <td>${nodata}</td>
+                </tr>
+        </table>
         <a href="#th">検索欄へ↑</a>
     </form>
     <br>

@@ -55,14 +55,19 @@ public class SearchServlet extends HttpServlet {
         //ˆø”‚Í“]‘—æ‚ÌURL
         //RequestDispatcher dispatcher =
         //        req.getRequestDispatcher("threadlist");
-
+        
         //“]‘—æ‚É—v‹‚ğ“]‘—‚·‚é
         //dispatcher.forward(req, res);
         
         search=db.threadSearch(thread.getThreadTitle(),search);
         
-        req.setAttribute("search",search);
+        if(search==null || search.size() == 0){
+            String nodata = "ŠY“–Œ‹‰Ê‚ª‚ ‚è‚Ü‚¹‚ñ‚Å‚µ‚½";
+            req.setAttribute("nodata",nodata);
+        }else{
 
+            req.setAttribute("search",search);
+        }
         RequestDispatcher dispatcher = 
             req.getRequestDispatcher("searchlist");
         

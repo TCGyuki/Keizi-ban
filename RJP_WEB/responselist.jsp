@@ -20,7 +20,7 @@
 
 <title>
 	<c:forEach var="_responses" items="${r_list}">
-	${_responses.threadTitle}スレッド
+		${_responses.threadTitle}スレッド
 	</c:forEach>
 </title>
 </head>
@@ -44,15 +44,16 @@
 		</tr>
 	</c:forEach>
 	</table>
+	<h3>※現在の禁止用語【"呉石","たまねぎ","玉ねぎ","うさぎ","兎","rabbit"】</h3>
 	<br>
 	<table>
 		<!--<tr><th>レスID</th><th>日付</th><th>名前</th><th>コメント</th></tr>-->
 		<c:forEach var="responses" items="${responses}">
 			<tr>
-				<td><a id="anker1" >${responses.resID}:</a>[${responses.resUser}]</td></tr>
+				<td><a id="anker1" >${responses.resID}:</a>[${responses.resUser}]・・・${responses.resDate}・・・</td>
+			</tr>
 			<tr>
 				<td>${responses.resComment}</td>
-				<td>・・・${responses.resDate}・・・</td>
 			</tr>
 			<tr></tr><tr></tr><tr></tr>
 		</c:forEach>

@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.math.BigDecimal;
 import java.sql.Date;
 
+import tera.newLine;
+
 public class DBAccess{
 	//selectデータの格納先
 	/*
@@ -29,6 +31,8 @@ public class DBAccess{
 		return db2;
 	}
 	*/
+
+	newLine nl = new newLine();
 
 	public ArrayList<ThreadBean> selectThid(String Thread_ID,ArrayList<ThreadBean> list){
 		try{
@@ -205,6 +209,8 @@ public class DBAccess{
 
 				count += 1;//レスでId表示用に作成
 				ri = Integer.toString(count);
+
+				rc = nl.htmlEscape(rc);
 
 				rb.setResID(ri);
 				rb.setResUser(ru);

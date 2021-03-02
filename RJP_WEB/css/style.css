@@ -4,11 +4,11 @@
 ----------------------------------------------------------*/
 html {
 	font-size: 100%;
-    background: #9ddde7;;
+    background: #cff6fc;;
 }
 body{
-    font-family: cursive, "UD ƒfƒWƒ^ƒ‹ ‹³‰È‘‘Ì NK-B","UD Digi Kyokasho NK-B";
-    line-height: 200%;
+    /*font-family: cursive, "UD ƒfƒWƒ^ƒ‹ ‹³‰È‘‘Ì NK-B","UD Digi Kyokasho NK-B";
+    */line-height: 200%;
     color:#353535;
 }
 a {
@@ -19,8 +19,8 @@ img {
 }
 
 textarea{
-	border: 2px solid #9ddde7;  /* ˜gü */
-	border-radius: 0em;   /* ŠpŠÛ */
+	border: 2px solid #686868;  /* ˜gü */
+	border-radius: 0em;   /* ŠpŠÛ*/
 	padding: 0.45vw 0.3vw 0.15vw 0.3vw;          /* “à‘¤‚Ì—]”’—Ê */
 	background-color: #9ddde7;  /* ”wŒiF */
 	width: 20vw;             /* ‰¡• */
@@ -28,14 +28,14 @@ textarea{
 	font-size: 1vw;          /* •¶šƒTƒCƒY */
 	line-height: 1;
 	resize: none;
-	color: #9ddde7;
+	color: #000000;
 }
-textarea:focus {
-    border-color: #87a5e7;   /* ˜gü‚ÌF */
-    background-color: #87a5e7;  /* ”wŒiF */
+/*textarea:focus {
+    border-color: #d8b92c;   ˜gü‚ÌF 
+    background-color: #e787a4;   ”wŒiF 
     color: #000000;
     outline: none;
-}
+}*/
 .submit-button{
 	vertical-align: middle;
 	border: 2px solid #3b3a3a;  /* ˜gü */

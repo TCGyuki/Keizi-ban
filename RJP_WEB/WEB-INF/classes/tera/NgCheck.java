@@ -23,7 +23,7 @@ public class NgCheck {
                 wordList.add(value[o] + "は" + restriction[o][0] + "文字以上" + restriction[o][1] + "文字以下で入力してください。");
             }*/
             //禁止文字種を増やしたい場合は、この配列内に要素を追加してください
-            String word[] = {"呉石","たまねぎ","玉ねぎ"};
+            String word[] = {"呉石","たまねぎ","玉ねぎ","うさぎ","兎","rabbit"};
     
 
             for(String i:word){ //word配列から要素を取り出してiに格納

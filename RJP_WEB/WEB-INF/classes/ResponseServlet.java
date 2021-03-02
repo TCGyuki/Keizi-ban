@@ -13,12 +13,14 @@ import tera.ThreadBean;
 import tera.ResBean;
 import tera.DBAccess;
 import tera.NgCheck;
+import tera.newLine;
 
 public class ResponseServlet extends HttpServlet {
 
     private ArrayList<ResBean> responses = new ArrayList<ResBean>();
     DBAccess db  = new DBAccess();
     NgCheck nc = new NgCheck();
+    newLine nl = new newLine();
     private String t_id; 
     private ArrayList<ThreadBean> r_list = new ArrayList<ThreadBean>();
 
@@ -39,7 +41,9 @@ public class ResponseServlet extends HttpServlet {
         String rc = req.getParameter("Res_comment");
         
         //Integer rii=Integer.parseInt(ri);
-
+        
+        //改行処理
+        //rc = nl.htmlEscape(rc);
         //NGチェック処理
         String result=nc.doCheck(rc);
         if(result == ""){
