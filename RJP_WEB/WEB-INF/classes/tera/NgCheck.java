@@ -23,7 +23,8 @@ public class NgCheck {
                 wordList.add(value[o] + "は" + restriction[o][0] + "文字以上" + restriction[o][1] + "文字以下で入力してください。");
             }*/
             //禁止文字種を増やしたい場合は、この配列内に要素を追加してください
-            String word[] = {"呉石","たまねぎ","玉ねぎ","うさぎ","兎","rabbit"};
+            String word[] = {"たまねぎ","玉ねぎ","うさぎ","兎","rabbit"};
+            String word2[] = {"井坂","呉石"};
     
 
             for(String i:word){ //word配列から要素を取り出してiに格納
@@ -38,6 +39,20 @@ public class NgCheck {
                 if(m.find()) {
                     //result="[この発言には不適切な内容が含まれていました]";
                     text=text.replaceAll(i,"[禁止用語]");
+                }
+            }
+            for(String i:word2){ //word配列から要素を取り出してiに格納
+                StringBuilder sb = new StringBuilder(); //正規表現。文字連結
+                sb.append("^(.*");
+                sb.append(i);
+                sb.append(").*");
+                Pattern p = Pattern.compile(sb.toString()); //正規表現をパターンオブジェクトにコンパイル
+                Matcher m = p.matcher(/*contents[o]*/text); //判定する
+
+                //禁止文字が含まれていた場合
+                if(m.find()) {
+                    //result="[この発言には不適切な内容が含まれていました]";
+                    text=text.replaceAll(i, i + "大先生");
                 }
             }
         }/*

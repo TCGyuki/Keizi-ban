@@ -13,14 +13,12 @@ import tera.ThreadBean;
 import tera.ResBean;
 import tera.DBAccess;
 import tera.NgCheck;
-import tera.newLine;
 
 public class ResponseServlet extends HttpServlet {
 
     private ArrayList<ResBean> responses = new ArrayList<ResBean>();
     DBAccess db  = new DBAccess();
     NgCheck nc = new NgCheck();
-    newLine nl = new newLine();
     private String t_id; 
     private ArrayList<ThreadBean> r_list = new ArrayList<ThreadBean>();
 

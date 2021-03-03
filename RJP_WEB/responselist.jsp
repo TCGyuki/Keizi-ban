@@ -1,5 +1,5 @@
 <%@ page pageEncoding="Windows-31J"
-	contentType="text/html;charset=Windows-31J" %>
+	contentType="text/html;charset=Windows-31J" errorPage="/error.jsp"%>
 
 <%--JSTL 1.1.2 core タグライブラリ--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

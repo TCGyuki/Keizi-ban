@@ -23,8 +23,8 @@ textarea{
 	border-radius: 0em;   /* 角丸*/
 	padding: 0.45vw 0.3vw 0.15vw 0.3vw;          /* 内側の余白量 */
 	background-color: #9ddde7;  /* 背景色 */
-	width: 20vw;             /* 横幅 */
-	height: 2vw;           /* 高さ */
+	width: 50vw;             /* 横幅 */
+	height: 8vw;           /* 高さ */
 	font-size: 1vw;          /* 文字サイズ */
 	line-height: 1;
 	resize: none;
