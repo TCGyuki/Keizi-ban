@@ -49,8 +49,6 @@ CREATE TABLE Response(
 	CONSTRAINT FK_Thread_ID FOREIGN KEY(Thread_ID) REFERENCES Thread(Thread_ID)
 );
 
-ALTER TABLE Response MODIFY ( Res_comment VARCHAR2(2000 char));
-
 CREATE SEQUENCE T_ID_SEQ
  START WITH 1
  INCREMENT BY 1
@@ -65,6 +63,15 @@ CREATE SEQUENCE R_ID_SEQ
  MINVALUE 1
  NOCYCLE;
 
+/* テーブル　変更
+--------------------------------------*/
+
+ALTER TABLE Thread MODIFY(Thread_User VARCHAR2(40) DEFAULT '名もなき人間');
+ALTER TABLE Response MODIFY(Res_User VARCHAR2(40) DEFAULT '名もなき人間',
+				Res_comment VARCHAR2(2000 char));
+
+/* テーブル削除
+----------------------------------------------------------*/
 
 DROP TABLE Response;
 DROP TABLE Thread;
