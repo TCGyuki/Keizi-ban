@@ -1,0 +1,55 @@
+@charset "Windows-31J";
+
+/*共通部分
+----------------------------------------------------------*/
+html {
+	font-size: 100%;
+    background: #cff6fc;;
+}
+body{
+    font-family: cursive, "UD デジタル 教科書体 NK-B","UD Digi Kyokasho NK-B";
+    line-height: 200%;
+    color:#353535;
+}
+a {
+	text-decoration: none;
+}
+img {
+	max-width: 100%;
+}
+
+textarea{
+	border: 2px solid #686868;  /* 枠線 */
+	border-radius: 0em;   /* 角丸*/
+	padding: 0.45vw 0.3vw 0.15vw 0.3vw;          /* 内側の余白量 */
+	background-color: #9ddde7;  /* 背景色 */
+	width: 50vw;             /* 横幅 */
+	height: 4vw;           /* 高さ */
+	font-size: 1vw;          /* 文字サイズ */
+	line-height: 1;
+	resize: none;
+	color: #000000;
+}
+/*textarea:focus {
+    border-color: #d8b92c;   枠線の色 
+    background-color: #e787a4;   背景色 
+    color: #000000;
+    outline: none;
+}*/
+.submit-button{
+	vertical-align: middle;
+	border: 2px solid #3b3a3a;  /* 枠線 */
+	border-radius: 0.0em;   /* 角丸 */
+	padding: 0.vw;          /* 内側の余白量 */
+	margin-bottom: 4px;
+	background-color: #87a5e7;  /* 背景色 */
+	width: 5vw;             /* 横幅 */
+	height: 3vw;           /* 高さ */
+	font-size: 1.5vw;          /* 文字サイズ */
+	line-height: 1;
+    outline: none;           /* ※ブラウザが標準で付加する線を消したいとき? */
+    color: #272727;
+}
+
+
+/*-----------投稿-----------------------*/
