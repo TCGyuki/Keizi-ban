@@ -83,7 +83,6 @@ public class DBAccess{
 			Connection cn=
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"TB_MASTER","TBPASS");
-			//System.out.println("接続完了");
 			
 			//select文
 			String sql=" SELECT Thread_ID,Thread_Title,Thread_Date,Thread_User FROM Thread ORDER BY TO_NUMBER(Thread_ID)";
@@ -96,7 +95,7 @@ public class DBAccess{
 			//インスタンスが返る
 			ResultSet rs=st.executeQuery(sql);
 			threads.clear();
-//カーソルを一行だけスクロールし、データをフェッチする
+			//カーソルを一行だけスクロールし、データをフェッチする
 			while(rs.next()){
 				ThreadBean tb = new ThreadBean();
 				String ti=rs.getString (1);	//1列目のデータを取得
@@ -108,18 +107,10 @@ public class DBAccess{
 				tb.setThreadDate(td);
 				tb.setThreadUser(tu);
 				threads.add(tb);
-				/*int Date = Integer.parseInt(Res_Date);*/
-            }		
-            //確認用	
-			//System.out.println("Res_User"+"\t"+"Res_ID"+"\t"+"Res_Date");
-			//System.out.println(Res_User+"\t"+Res_ID+"\t"+Res_Date);
-			
-
+            }
 			
 			//Oracleから切断する
 			cn.close();
-
-			//System.out.println("切断完了");
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
 			System.out.println("クラスがないみたい。");
@@ -140,7 +131,6 @@ public class DBAccess{
 			Connection cn=
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"TB_MASTER","TBPASS");
-			//System.out.println("接続完了");
 			
 			//Insert文
 			String sql=" INSERT INTO Thread VALUES(T_ID_SEQ.NEXTVAL,'" + Thread_Title + "',SYSDATE,'" + Thread_User + "')";
@@ -156,13 +146,12 @@ public class DBAccess{
 
 			//select文を実行し
 			//ResultSetインターフェイスを実装したクラスの
-			//インスタンスが返る
+			//インスタンスが返る。intは必要な時にその値を返せるから
 			int in=st.executeUpdate(sql);
-
+			
 			//Oracleから切断する
 			cn.close();
 
-			//System.out.println("切断完了");
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
 			System.out.println("クラスがないみたい。");
@@ -182,7 +171,6 @@ public class DBAccess{
 			Connection cn=
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"TB_MASTER","TBPASS");
-			//System.out.println("接続完了");
 			
 			//select文
 			String sql=" SELECT Res_ID,Res_User,Res_Date,Res_comment FROM Response WHERE Thread_ID="+t_id+" ORDER BY TO_NUMBER(Res_ID)";
@@ -204,8 +192,6 @@ public class DBAccess{
 				String ru=rs.getString(2);	//3列目のデータを取得
 				String rd=rs.getString(3);	//4列目のデータを取得
             	String rc=rs.getString(4);	//5列目のデータを取得
-            	//int RU = Integer.parseInt(Res_User);
-            	//int RI = Integer.parseInt(Res_ID);
 
 				count += 1;//レスでId表示用に作成
 				ri = Integer.toString(count);
@@ -218,16 +204,10 @@ public class DBAccess{
 				rb.setResComment(rc);
 				responses.add(rb);
             }		
-            //確認用	
-			//System.out.println("Res_User"+"\t"+"Res_ID"+"\t"+"Res_Date"+"/t"+Res_comment);
-			//System.out.println(Res_User+"\t"+Res_ID+"\t"+Res_Date+"/t"+Res_comment);
-			
-
 			
 			//Oracleから切断する
 			cn.close();
 
-			//System.out.println("切断完了");
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
 			System.out.println("クラスがないみたい。");
@@ -240,7 +220,7 @@ public class DBAccess{
 		return responses;
 	}
 
-    public void resInsert(String Thread_ID,String Res_User,String Res_comment){
+    public void resInsert(String Thread_ID,String Res_User,String Res_comment) throws SQLException {
 		try{
 			
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -249,7 +229,6 @@ public class DBAccess{
 			Connection cn=
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"TB_MASTER","TBPASS");
-			//System.out.println("接続完了");
 			
 			//Insert文
 			String sql=" INSERT INTO Response VALUES('" + Thread_ID + "',R_ID_SEQ.NEXTVAL,'" + Res_User + "',SYSDATE,'" + Res_comment + "')";
@@ -270,13 +249,13 @@ public class DBAccess{
 			//Oracleから切断する
 			cn.close();
 
-			//System.out.println("切断完了");
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
 			System.out.println("クラスがないみたい。");
 		}catch(SQLException e){
 			e.printStackTrace();
 			System.out.println("SQL関連の例外みたい。");
+			throw new SQLException(e.getMessage(),e);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -329,7 +308,6 @@ public class DBAccess{
 			Connection cn=
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"TB_MASTER","TBPASS");
-			//System.out.println("接続完了");
 			
 			//select文
 			String sql=" select * from ( select * FROM Response order by Res_Date desc ) where rownum <=10";
@@ -351,6 +329,9 @@ public class DBAccess{
 				String ru=rs.getString(3);
 				String rd=rs.getString(4);
 				String rc=rs.getString(5);
+
+				rc = nl.htmlEscape(rc);
+
 				rb.setThreadID(ti);
 				rb.setResUser(ru);
 				rb.setResDate(rd);
@@ -358,11 +339,9 @@ public class DBAccess{
 				list.add(rb);
             }
 
-			
 			//Oracleから切断する
 			cn.close();
 
-			//System.out.println("切断完了");
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
 			System.out.println("クラスがないみたい。");

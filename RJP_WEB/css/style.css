@@ -7,9 +7,14 @@ html {
     background: #cff6fc;;
 }
 body{
-    /*font-family: cursive, "UD デジタル 教科書体 NK-B","UD Digi Kyokasho NK-B";
-    */line-height: 200%;
+    font-family: cursive, "UD デジタル 教科書体 NK-B","UD Digi Kyokasho NK-B";
+    line-height: 200%;
     color:#353535;
+	max-width: 1170px;
+    margin-left: 10px;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 a {
 	text-decoration: none;
@@ -24,7 +29,7 @@ textarea{
 	padding: 0.45vw 0.3vw 0.15vw 0.3vw;          /* 内側の余白量 */
 	background-color: #9ddde7;  /* 背景色 */
 	width: 50vw;             /* 横幅 */
-	height: 8vw;           /* 高さ */
+	height: 4vw;           /* 高さ */
 	font-size: 1vw;          /* 文字サイズ */
 	line-height: 1;
 	resize: none;

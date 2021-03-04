@@ -1,0 +1,4 @@
+|| CHR(10) ||
+
+INSERT INTO Thread VALUES(T_ID_SEQ.NEXTVAL,'お前らの好きなアスキーアート教えてクレメンス',SYSDATE,'ダイソントラウマ提督');
+INSERT INTO Response VALUES('4',R_ID_SEQ.NEXTVAL,'フレッチャーどこ',SYSDATE,'　　★★★★　　　★★★★ '|| CHR(10) ||'　★　　　　★　★　　　　★'|| CHR(10) ||'　★　･*･ ∧_∧★∧_∧･*･　★'|| CHR(10) ||'　★　’.　(｡･ω･)(･ω･｡)　’　★ '|| CHR(10) ||'　　★　’･|　つ♥と　|･’　★'|| CHR(10) ||'　　★　*ﾟ’･｡°｡･ﾟ’*　★');

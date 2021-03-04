@@ -19,14 +19,12 @@
 	<link href="css/style.css" rel="stylesheet">
 
 <title>
-	<c:forEach var="_responses" items="${r_list}">
-		${_responses.threadTitle}スレッド
-	</c:forEach>
+		${threadTitle}スレッド
 </title>
 </head>
 
-<body>
-	<h2>     </h2>
+<body>    
+	<a href="http://localhost:8080/RJP_WEB/ThreadServlet">←スレッド一覧に戻る</a>
 	<h1 id="上に戻る↑">TADANO掲示板</h1>
 	<h2>
 		<c:forEach var="_responses" items="${r_list}">
@@ -73,8 +71,9 @@
 		
 	</table>
 	<input class="submit-button" type='submit' value='投稿'><br>
-	</form>
 	<a href="http://localhost:8080/RJP_WEB/ThreadServlet">←スレッド一覧に戻る</a>
+	</form>
+
 
 </body>
 </html>

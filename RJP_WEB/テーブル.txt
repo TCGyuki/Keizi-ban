@@ -1,14 +1,3 @@
-CREATE TABLE TestTable(
- ID NUMBER(10)		 CONSTRAINT pk_TestID PRIMARY KEY
- ,Name VARCHAR2(50)	 NOT NULL
-			 CONSTRAINT UQ_TestName UNIQUE
- ,Pass VARCHAR2(50)	 NOT NULL
- ,Content VARCHAR2(50)	 NOT NULL
-);
-
-
-insert into TestTable values(1,'Mayuzumi','hack','do-mo');
-
 CREATE USER TB_MASTER
 IDENTIFIED BY TBPASS
 DEFAULT TABLESPACE USERS
@@ -19,14 +8,12 @@ GRANT CREATE SESSION,CREATE TABLE,
 CREATE VIEW,CREATE SEQUENCE,CREATE SYNONYM,CREATE PUBLIC SYNONYM
 TO TB_MASTER;
 
+===================
+
 conn TB_MASTER
 TBPASS
 
-CREATE TABLE User_k (
-	User_ID    	varchar2(20),
-	User_Name	varchar2(20),
-	pass       	varchar2(20)
-);←作らなった
+===================
 
 CREATE TABLE Thread (
 	Thread_ID       varchar2(8),
@@ -49,6 +36,10 @@ CREATE TABLE Response(
 	CONSTRAINT FK_Thread_ID FOREIGN KEY(Thread_ID) REFERENCES Thread(Thread_ID)
 );
 
+ALTER TABLE Thread MODIFY(Thread_User VARCHAR2(40) DEFAULT '名もなき人間');
+ALTER TABLE Response MODIFY(Res_User VARCHAR2(40) DEFAULT '名もなき人間',
+				Res_comment VARCHAR2(2000 char));
+
 CREATE SEQUENCE T_ID_SEQ
  START WITH 1
  INCREMENT BY 1
@@ -62,18 +53,3 @@ CREATE SEQUENCE R_ID_SEQ
  MAXVALUE 500
  MINVALUE 1
  NOCYCLE;
-
-/* テーブル　変更
---------------------------------------*/
-
-ALTER TABLE Thread MODIFY(Thread_User VARCHAR2(40) DEFAULT '名もなき人間');
-ALTER TABLE Response MODIFY(Res_User VARCHAR2(40) DEFAULT '名もなき人間',
-				Res_comment VARCHAR2(2000 char));
-
-/* テーブル削除
-----------------------------------------------------------*/
-
-DROP TABLE Response;
-DROP TABLE Thread;
-DROP SEQUENCE T_ID_SEQ;
-DROP SEQUENCE R_ID_SEQ;

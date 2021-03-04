@@ -34,15 +34,11 @@
             <c:forEach var="_threads" items="${search}">
                 <tr>
                 <td><a href="ResponseServlet?id=${_threads.threadID}">>>${_threads.threadID}</a></td>
-                <!--<td>${_threads.threadID}</td>-->
                 <td>${_threads.threadTitle}</td>
                 <td>${_threads.threadDate}</td>
                 <td>${_threads.threadUser}</td>
                 </tr>
             </c:forEach>
-        <!--<p>投稿</p>
-            タイトル：<input type="text" name="Thread_Title" size="40"><br>
-            作成者名：<input type="text" name="Thread_User" size="10">-->
         </table>
         <table>
                 <tr>

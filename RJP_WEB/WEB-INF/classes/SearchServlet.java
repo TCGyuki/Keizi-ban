@@ -37,27 +37,12 @@ public class SearchServlet extends HttpServlet {
         //POST要求によって送信されたパラメータを取得する
         String tt = req.getParameter("Thread_Title");
 
-        //Integer tii=Integer.parseInt(ti);
-
         //UserBeanをインスタンス化し、データをセットする
 		ThreadBean thread=new ThreadBean();
 		thread.setThreadTitle(tt);
-		
-        //db.threadInsert(tt,tu);
-		//リストに追加する　ArrayListにいれる
-		//threads.add(thread);
 
         //HttpServletRequestの実装クラスのインスタンスに
         req.setAttribute("tt", tt);
-        
-        //RequestDispatcherインターフェイスを実装するクラスの
-        //インスタンスを取得する
-        //引数は転送先のURL
-        //RequestDispatcher dispatcher =
-        //        req.getRequestDispatcher("threadlist");
-        
-        //転送先に要求を転送する
-        //dispatcher.forward(req, res);
         
         search=db.threadSearch(thread.getThreadTitle(),search);
         

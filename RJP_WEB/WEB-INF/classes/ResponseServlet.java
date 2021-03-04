@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 
 import java.io.PrintWriter;
 
@@ -22,7 +23,6 @@ public class ResponseServlet extends HttpServlet {
     private String t_id; 
     private ArrayList<ThreadBean> r_list = new ArrayList<ThreadBean>();
 
-    //private String th_id;//THREAD_ID格納用
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws IOException, ServletException {
@@ -38,10 +38,6 @@ public class ResponseServlet extends HttpServlet {
         String ru = req.getParameter("Res_User");
         String rc = req.getParameter("Res_comment");
         
-        //Integer rii=Integer.parseInt(ri);
-        
-        //改行処理
-        //rc = nl.htmlEscape(rc);
         //NGチェック処理
         String result=nc.doCheck(rc);
         if(result == ""){
@@ -58,26 +54,14 @@ public class ResponseServlet extends HttpServlet {
         response.setResComment(rc);
         
         t_id=req.getParameter("id");
-        db.resInsert(t_id,/*response.getResID(),*/response.getResUser(),/*response.getResDate(),*/response.getResComment());
+        try{
+        db.resInsert(t_id,response.getResUser(),response.getResComment());
         //db.resInsert(ru,rc);
+        }catch(SQLException e){
+			throw new ServletException(e.getMessage(),e);
+        }
 
         req.setAttribute("t_id",t_id);
-		//リストに追加する　ArrayListにいれる
-		//responses.add(response);
-
-        //HttpServletRequestの実装クラスのインスタンスに
-        //threadsという名前とpassという名前でデータを登録する threadのArraylist情報を送っている
-        //req.setAttribute("responses", responses);
-        
-        //RequestDispatcherインターフェイスを実装するクラスの
-        //インスタンスを取得する
-        //引数は転送先のURL
-        //RequestDispatcher dispatcher =
-        //        req.getRequestDispatcher("responselist");
-
-        //転送先に要求を転送する
-        //dispatcher.forward(req, res);
-        
         
         doGet(req,res);
     }
@@ -92,7 +76,6 @@ public class ResponseServlet extends HttpServlet {
         t_id = req.getParameter("id");
         r_list=db.selectThid(t_id,r_list);
         responses=db.resSelect(t_id,responses);
-        //responses = db.getData();//セットしなきゃいけないかも 
         req.setAttribute("r_list",r_list);
         req.setAttribute("responses",responses);
         req.setAttribute("t_id",t_id);

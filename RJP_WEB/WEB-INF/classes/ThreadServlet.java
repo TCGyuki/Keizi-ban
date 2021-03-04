@@ -52,8 +52,6 @@ public class ThreadServlet extends HttpServlet {
         String tu = req.getParameter("Thread_User");
         String td = req.getParameter("Thread_Date");
 
-        //Integer tii=Integer.parseInt(ti);
-
         //UserBeanをインスタンス化し、データをセットする
 		ThreadBean thread=new ThreadBean();
 		thread.setThreadID(ti);
@@ -61,23 +59,10 @@ public class ThreadServlet extends HttpServlet {
         thread.setThreadUser(tu);
         thread.setThreadDate(td);
 		
-        db.threadInsert(/*thread.getThreadID(),*/thread.getThreadTitle(),/*,thread.getThreadDate()*/thread.getThreadUser());
-        //db.threadInsert(tt,tu);
-		//リストに追加する　ArrayListにいれる
-		//threads.add(thread);
-
+        db.threadInsert(thread.getThreadTitle(),thread.getThreadUser());
         //HttpServletRequestの実装クラスのインスタンスに
         req.setAttribute("threads", threads);
         req.setAttribute("newlist",newlist);
-        
-        //RequestDispatcherインターフェイスを実装するクラスの
-        //インスタンスを取得する
-        //引数は転送先のURL
-        //RequestDispatcher dispatcher =
-        //        req.getRequestDispatcher("threadlist");
-
-        //転送先に要求を転送する
-        //dispatcher.forward(req, res);
         
         doGet(req,res);
     }
